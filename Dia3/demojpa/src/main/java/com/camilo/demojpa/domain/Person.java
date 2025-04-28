@@ -1,10 +1,13 @@
 package com.camilo.demojpa.domain;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 // para inicializar que esta clase va a ser una tabla
@@ -22,6 +25,11 @@ public class Person {
     
     @Column(name= "programming_language")
     private String language;
+
+    // Se realiza la union de person y rol
+    @OneToMany
+    private List<Rol> role;
+
 
     public Person() {
         
@@ -73,6 +81,12 @@ public class Person {
 
     public void setLanguage(String language) {
         this.language = language;
+    }
+    public List<Rol> getRol(){
+        return role;
+    }
+    public void setRole(List<Rol> role){
+        this.role=role;
     }
 
 
